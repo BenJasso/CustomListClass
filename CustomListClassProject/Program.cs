@@ -10,6 +10,13 @@ namespace CustomListClassProject
     {
         static void Main(string[] args)
         {
+            ListB<int> newlist = new ListB<int>();
+            newlist.Add(32);
+            
+            Console.WriteLine(newlist[0]);
+            Console.ReadLine();
+            
         }
+        
     }
 }
