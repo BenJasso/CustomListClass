@@ -126,7 +126,6 @@ namespace CustomListClassTests
             listB.Add(12);
             listB.Add(56);
             listB.Remove[1];
-
             actual = listB.Count;
 
 
@@ -154,7 +153,6 @@ namespace CustomListClassTests
             listB.Remove[4];
             listB.Remove[2]; 
             listB.Remove[5];
-
             actual = listB.Count;
 
 
@@ -179,8 +177,6 @@ namespace CustomListClassTests
             listB.Add(3);
             listB.Add(53);
             listB.Remove[3];
-           
-
             actual = listB[3];
 
 
@@ -188,30 +184,46 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]//8
-        public void Remove_CheckIndexOrder_RemoveMiddleValue()
+        [TestMethod]//9
+        public void Remove_CheckCount_RemoveAllValues()
         {
             // arrange
 
             ListB<int> listB = new ListB<int>();
-            int expected = 3;
+            int expected = 0;
             int actual;
 
             //act
             listB.Add(24);
             listB.Add(12);
             listB.Add(56);
-            listB.Add(2);
-            listB.Add(3);
-            listB.Add(53);
-            listB.Remove[3];
-
-
-            actual = listB[3];
+            
+            listB.Remove[0];
+            listB.Remove[1];
+            listB.Remove[2];
+            actual = listB.Count;
 
 
             //assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]//10
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void Remove_CheckForErrorMessage_RemoveValueThatsNotThere()
+
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            
+            //act
+            listB.Add(24);
+            listB.Add(12);
+            listB.Add(56);
+            listB.Remove[4];
+           
+            
         }
     } 
 }
