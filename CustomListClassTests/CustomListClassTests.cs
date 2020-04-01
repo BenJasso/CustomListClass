@@ -105,7 +105,7 @@ namespace CustomListClassTests
             listB.Add(value + 20);
             listB.Add(value + 15);
             listB.Add(value + 32);
-            actual = listB[2];
+            actual = listB.Remove(value + 20);
 
 
             //assert
@@ -125,8 +125,8 @@ namespace CustomListClassTests
             listB.Add(24);
             listB.Add(12);
             listB.Add(56);
-            listB.Remove[1];
-            actual = listB.Count;
+            listB.Remove(12);
+                                                                                                                                                                                                                                                                                        actual = listB.Count;
 
 
             //assert
@@ -149,10 +149,10 @@ namespace CustomListClassTests
             listB.Add(2);
             listB.Add(3);
             listB.Add(53);
-            listB.Remove[0];
-            listB.Remove[4];
-            listB.Remove[2]; 
-            listB.Remove[5];
+            listB.Remove(24);
+            listB.Remove(3);
+            listB.Remove(56); 
+            listB.Remove(53);
             actual = listB.Count;
 
 
@@ -176,7 +176,7 @@ namespace CustomListClassTests
             listB.Add(2);
             listB.Add(3);
             listB.Add(53);
-            listB.Remove[3];
+            listB.Remove(2);
             actual = listB[3];
 
 
@@ -198,9 +198,9 @@ namespace CustomListClassTests
             listB.Add(12);
             listB.Add(56);
             
-            listB.Remove[0];
-            listB.Remove[1];
-            listB.Remove[2];
+            listB.Remove(24);
+            listB.Remove(12);
+            listB.Remove(56);
             actual = listB.Count;
 
 
@@ -221,9 +221,57 @@ namespace CustomListClassTests
             listB.Add(24);
             listB.Add(12);
             listB.Add(56);
-            listB.Remove[4];
+            listB.Remove(99);
            
             
+        }
+
+        [TestMethod]//11
+        public void Remove_CheckCount_RemoveAValueThatHasADuplicateValue()
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            int expected = 3;
+            int actual;
+
+            //act
+            listB.Add(24);
+            listB.Add(12);
+            listB.Add(24);
+            listB.Add(33);
+
+            listB.Remove(24);
+            
+            actual = listB.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]//11
+        public void Remove_CheckArrayOrder_RemoveAValueThatHasADuplicateValue()
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            int expected = 24;
+            int actual;
+
+            //act
+            listB.Add(24);
+            listB.Add(12);
+            listB.Add(24);
+            listB.Add(33);
+
+            listB.Remove(24);
+
+            actual = listB[1];
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
         }
     } 
 }
