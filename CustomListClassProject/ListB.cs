@@ -45,8 +45,14 @@ namespace CustomListClassProject
         {
             get
             {
-                
-                return listArray[number];
+                if(number >= 0 && number < listArray.Length)
+                {
+                    return listArray[number];
+                }
+                else
+                {
+                    throw new IndexOutOfRangeException("Out of range");
+                }
 
 
             }

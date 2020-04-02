@@ -528,5 +528,26 @@ namespace CustomListClassTests
 
 
         }
+
+        [TestMethod]//20
+        [ExpectedException(typeof(IndexOutOfRangeException))]
+        public void Indexer_CheckForExceptionCode()
+        {
+            ListB<int> listB = new ListB<int>();
+
+           
+
+            //act
+            listB.Add(23);
+            listB.Add(33);
+            listB.Add(43);
+            listB.Add(38);
+            listB.Add(55);
+
+            Console.WriteLine($"{listB[7]}");
+           
+            //assert
+          
+        }
         }
 }
