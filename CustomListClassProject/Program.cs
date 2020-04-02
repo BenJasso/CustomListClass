@@ -15,8 +15,14 @@ namespace CustomListClassProject
             newlist.Add(2);
             newlist.Add(3);
 
+            ListB<int> newlist2 = new ListB<int>();
+            newlist2.Add(7);
+            newlist2.Add(8);
+            newlist2.Add(9);
 
-            Console.WriteLine(newlist.ToString());
+            ListB<int> combinedList = new ListB<int>();
+            combinedList = newlist + newlist2;
+            Console.WriteLine(combinedList.ToString());
             Console.ReadLine();
 
 

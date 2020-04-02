@@ -319,29 +319,104 @@ namespace CustomListClassTests
             //assert
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]//15
-        public void ToString_CheckCoversion_ListOfDoubles()
+
+        [TestMethod]//16
+        public void OverloadAdditionOfLists_CheckCount_TwoListsOfIntegers()
         {
             // arrange
 
-            ListB<double> listB = new ListB<double>();
-            string expected = "30.213.21";
-            string actual;
+            ListB<int> listB = new ListB<int>();
+            ListB<int> listA = new ListB<int>();
+            ListB<int> combinedList = new ListB<int>();
+            int expected = 8;
+            int actual;
 
             //act
-            listB.Add(30.21);
-            listB.Add(3.21);
+            listB.Add(3);
+            listB.Add(9);
+            listB.Add(55);
+            listA.Add(22);
+            listA.Add(23);
+            listA.Add(24);
+            listA.Add(25);
+            listA.Add(26);
+
+            combinedList = listB + listA;
 
 
 
-
-            actual = listB.ToString();
+            actual = combinedList.Count;
 
 
             //assert
             Assert.AreEqual(expected, actual);
         }
-    
-    
-} 
+
+        [TestMethod]//17
+        public void OverloadAdditionOfLists_CheckCount_TwoListsOfStrings()
+        {
+            // arrange
+
+            ListB<string> listB = new ListB<string>();
+            ListB<string> listA = new ListB<string>();
+            ListB<string> combinedList = new ListB<string>();
+            int expected = 8;
+            int actual;
+
+            //act
+            listB.Add("B");
+            listB.Add("e");
+            listB.Add("n");
+            listA.Add("j");
+            listA.Add("a");
+            listA.Add("m");
+            listA.Add("i");
+            listA.Add("n");
+
+            combinedList = listB + listA;
+
+
+
+            actual = combinedList.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]//18
+        public void OverloadAdditionOfLists_CheckArrayOrderAfterCombining_TwoListsOfStrings()
+        {
+            // arrange
+
+            ListB<string> listB = new ListB<string>();
+            ListB<string> listA = new ListB<string>();
+            ListB<string> combinedList = new ListB<string>();
+            string expected = "m";
+            string actual;
+
+            //act
+            listB.Add("B");
+            listB.Add("e");
+            listB.Add("n");
+            listA.Add("j");
+            listA.Add("a");
+            listA.Add("m");
+            listA.Add("i");
+            listA.Add("n");
+
+            combinedList = listB + listA;
+
+
+
+            actual = combinedList[5];
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
+    }
 }
