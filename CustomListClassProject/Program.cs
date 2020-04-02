@@ -30,7 +30,7 @@ namespace CustomListClassProject
 
 
 
-            Console.WriteLine($"{zippedList.Count}");
+            Console.WriteLine($"{zippedList}");
             Console.ReadLine();
 
 

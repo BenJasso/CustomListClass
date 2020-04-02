@@ -239,14 +239,14 @@ namespace CustomListClassProject
         }
         public static ListB<T> operator -(ListB<T> l1, ListB<T> l2)
         {
-
-
+            //takes the first list and creates a clone
             ListB<T> newList = new ListB<T>();
             for (int i = 0; i < l1.Count; i++)
             {
                 newList.Add(l1[i]);
             }
 
+            //searches the comparing list for duplicate objects and removes them from the cloned list
             for (int i = 0; i < newList.Count; i++)
             {
                 for (int j = 0; j < l2.Count; j++)
@@ -254,16 +254,12 @@ namespace CustomListClassProject
                     if (newList[i].Equals(l2[j]))
                     {
                         newList.Remove(l2[j]);
-                        
+
                     }
-                    
                 }
-                
-
             }
+            //returns the clones list with subtracted objects
             return newList;
-
-          
         }
 
         public override string ToString()
