@@ -195,6 +195,30 @@ namespace CustomListClassProject
 
             return combinedList;
         }
+        public static ListB<T> operator -(ListB<T> l1, ListB<T> l2)
+        {
+
+
+            ListB<T> newList = new ListB<T>();
+
+            for (int i = 0; i < l1.Count; i++)
+            {
+                for (int j = 0; j < l2.Count; j++)
+                {
+                    if (l1[i].Equals(l2[j]))
+                    {
+                        l1.Remove(l2[j]);
+                        
+                    }
+                    
+                }
+                
+
+            }
+            return l1;
+
+          
+        }
 
         public override string ToString()
         {

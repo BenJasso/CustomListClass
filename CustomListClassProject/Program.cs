@@ -10,28 +10,28 @@ namespace CustomListClassProject
     {
         static void Main(string[] args)
         {
-            ListB<int> newlist = new ListB<int>();
-            newlist.Add(1);
-            newlist.Add(2);
-            newlist.Add(3);
+            ListB<string> listB = new ListB<string>();
+            ListB<string> listA = new ListB<string>();
+            ListB<string> combinedList = new ListB<string>();
+            
 
-            ListB<int> newlist2 = new ListB<int>();
-            newlist2.Add(7);
-            newlist2.Add(8);
-            newlist2.Add(9);
+            //act
+            listB.Add("B");
+            listB.Add("e");
+            listB.Add("n");
+            listA.Add("B");
+            listA.Add("a");
+            listA.Add("m");
+            listA.Add("i");
+            listA.Add("n");
 
-            ListB<int> combinedList = new ListB<int>();
-            combinedList = newlist + newlist2;
-            Console.WriteLine(combinedList.ToString());
-            Console.ReadLine();
+            combinedList = listB - listA;
+
+            Console.WriteLine($"{combinedList.Count}");
 
 
 
 
-
-
-            Console.WriteLine(newlist.Count);
-            Console.ReadLine();
             
         }
         

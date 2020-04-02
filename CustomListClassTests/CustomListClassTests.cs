@@ -416,6 +416,70 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
+        [TestMethod]//19
+        public void OverloadSubtractionOfLists_CheckCount_TwoListsOfStrings()
+        {
+            // arrange
+
+            ListB<string> listB = new ListB<string>();
+            ListB<string> listA = new ListB<string>();
+            ListB<string> combinedList = new ListB<string>();
+            int expected = 2;
+            int actual;
+
+            //act
+            listB.Add("B");
+            listB.Add("e");
+            listB.Add("n");
+            listA.Add("B");
+            listA.Add("a");
+            listA.Add("m");
+            listA.Add("i");
+            listA.Add("p");
+
+            combinedList = listB - listA;
+
+
+
+            actual = listB.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]//19
+        public void OverloadSubtractionOfLists_CheckCount_TwoListsOfInts()
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            ListB<int> listA = new ListB<int>();
+            ListB<int> combinedList = new ListB<int>();
+            int expected = 2;
+            int actual;
+
+            //act
+            listB.Add(1);
+            listB.Add(2);
+            listB.Add(3);
+            listA.Add(1);
+            listA.Add(4);
+            listA.Add(5);
+            listA.Add(6);
+            listA.Add(7);
+
+            combinedList = listB - listA;
+
+
+
+            actual = listB.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
 
 
     }
