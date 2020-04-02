@@ -95,19 +95,19 @@ namespace CustomListClassTests
             // arrange
 
             ListB<int> listB = new ListB<int>();
-            int value = 23;
-            int expected = value + 20;
-            int actual;
+            
+            int expected = 43;
+            int actual = 0;
 
             //act
-            listB.Add(value);
-            listB.Add(value + 10);
-            listB.Add(value + 20);
-            listB.Add(value + 15);
-            listB.Add(value + 32);
-            actual = listB.Remove(value + 20);
+            listB.Add(23);
+            listB.Add(33);
+            listB.Add(43);
+            listB.Add(38);
+            listB.Add(55);
+            
 
-
+            actual = listB[2];
             //assert
             Assert.AreEqual(expected, actual);
         }
@@ -240,7 +240,6 @@ namespace CustomListClassTests
             listB.Add(12);
             listB.Add(24);
             listB.Add(33);
-
             listB.Remove(24);
             
             actual = listB.Count;
@@ -250,7 +249,7 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]//11
+        [TestMethod]//12
         public void Remove_CheckArrayOrder_RemoveAValueThatHasADuplicateValue()
         {
             // arrange

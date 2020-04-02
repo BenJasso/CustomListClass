@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace CustomListClassProject
 {
-    public class ListB<T>
+    public class ListB<T> : IEnumerable
     {
         //member variables
+        public int arrayIndexer;
+        public bool indexerSwitch = true;
         int count;
         public int Count
         {
@@ -52,7 +55,8 @@ namespace CustomListClassProject
             }
         }
         private T[] tempArray;
-        
+
+
 
 
         //constructor
@@ -60,46 +64,122 @@ namespace CustomListClassProject
         {
             capacity = 4;
             listArray = new T[capacity];
-           
+
         }
 
         //member methods
         public void Add(T value)
-        {   
-            if(count < capacity)
+        {
+            if (count < capacity)
             {
                 listArray[count] = value;
                 count++;
             }
 
-            
+
             else if (count >= capacity)
             {
-                
+
                 capacity *= 2;
                 tempArray = new T[capacity];
                 for (int i = 0; i < count; i++)
                 {
                     tempArray[i] = listArray[i];
-                    
+
                 }
                 listArray = new T[capacity];
                 for (int i = 0; i < count; i++)
                 {
                     listArray[i] = tempArray[i];
                 }
-                
-                
+
+
                 listArray[count] = value;
                 count++;
 
             }
-            
-            
-            
-
-           
         }
 
-    }
-}
+        public void Remove(T value)
+        {
+
+            for (int i = 0; i < count; i++)
+            {
+                if (listArray[i].Equals(value))
+                {
+                    arrayIndexer = i;
+                    break;
+                }
+                else if (i == count - 1)
+                {
+                    indexerSwitch = false;
+                }
+            }
+            tempArray = new T[capacity];
+            if (indexerSwitch == true)
+            {
+
+
+                if (arrayIndexer == 0)
+                {
+                    for (int j = 0; j < count; j++)
+                    {
+                        if (j == count - 1)
+                        {
+                            break;
+                        }
+                        tempArray[j] = listArray[j + 1];
+                    }
+                }
+                else if (arrayIndexer == count - 1)
+                {
+                    for (int j = 0; j < count - 1; j++)
+                    {
+                        tempArray[j] = listArray[j];
+                    }
+
+                }
+                else if (arrayIndexer > 0 && arrayIndexer < count - 1)
+                {
+                    for (int j = 0; j < arrayIndexer; j++)
+                    {
+                        tempArray[j] = listArray[j];
+                    }
+                    for (int k = arrayIndexer + 1; k < count; k++)
+                    {
+                        tempArray[k - 1] = listArray[k];
+                    }
+
+                }
+                count--;
+                listArray = new T[capacity];
+
+                for (int i = 0; i < count; i++)
+                {
+                    listArray[i] = tempArray[i];
+
+
+                }
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Value does not exist in the list. Your value is out of range.");
+
+            }
+
+
+
+        }
+
+            public IEnumerator GetEnumerator()
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    yield return listArray[i];
+                }
+            }
+        
+
+    } }
+
+    

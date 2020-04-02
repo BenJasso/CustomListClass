@@ -11,9 +11,19 @@ namespace CustomListClassProject
         static void Main(string[] args)
         {
             ListB<int> newlist = new ListB<int>();
-            newlist.Add(32);
-            
-            Console.WriteLine(newlist[0]);
+            newlist.Add(24);
+            newlist.Add(12);
+            newlist.Add(56);
+            newlist.Remove(99);
+
+
+
+
+
+
+
+
+            Console.WriteLine(newlist.Count);
             Console.ReadLine();
             
         }
