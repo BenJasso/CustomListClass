@@ -10,6 +10,8 @@ namespace CustomListClassProject
     public class ListB<T> : IEnumerable
     {
         //member variables
+
+        string stringOfList;
         public int arrayIndexer;
         public bool indexerSwitch = true;
         int count;
@@ -64,6 +66,8 @@ namespace CustomListClassProject
         {
             capacity = 4;
             listArray = new T[capacity];
+            
+
 
         }
 
@@ -171,7 +175,19 @@ namespace CustomListClassProject
 
         }
 
-            public IEnumerator GetEnumerator()
+        public override string ToString()
+        {
+             
+            for (int i = 0; i < count; i++)
+            {
+                string stringValue = Convert.ToString(listArray[i]);
+                stringOfList += stringValue;
+            }
+            return stringOfList;
+        }
+
+
+        public IEnumerator GetEnumerator()
             {
                 for (int i = 0; i < count; i++)
                 {

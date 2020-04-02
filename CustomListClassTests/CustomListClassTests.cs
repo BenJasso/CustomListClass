@@ -95,7 +95,7 @@ namespace CustomListClassTests
             // arrange
 
             ListB<int> listB = new ListB<int>();
-            
+
             int expected = 43;
             int actual = 0;
 
@@ -105,7 +105,7 @@ namespace CustomListClassTests
             listB.Add(43);
             listB.Add(38);
             listB.Add(55);
-            
+
 
             actual = listB[2];
             //assert
@@ -126,7 +126,7 @@ namespace CustomListClassTests
             listB.Add(12);
             listB.Add(56);
             listB.Remove(12);
-                                                                                                                                                                                                                                                                                        actual = listB.Count;
+            actual = listB.Count;
 
 
             //assert
@@ -151,7 +151,7 @@ namespace CustomListClassTests
             listB.Add(53);
             listB.Remove(24);
             listB.Remove(3);
-            listB.Remove(56); 
+            listB.Remove(56);
             listB.Remove(53);
             actual = listB.Count;
 
@@ -197,7 +197,7 @@ namespace CustomListClassTests
             listB.Add(24);
             listB.Add(12);
             listB.Add(56);
-            
+
             listB.Remove(24);
             listB.Remove(12);
             listB.Remove(56);
@@ -216,14 +216,14 @@ namespace CustomListClassTests
             // arrange
 
             ListB<int> listB = new ListB<int>();
-            
+
             //act
             listB.Add(24);
             listB.Add(12);
             listB.Add(56);
             listB.Remove(99);
-           
-            
+
+
         }
 
         [TestMethod]//11
@@ -241,7 +241,7 @@ namespace CustomListClassTests
             listB.Add(24);
             listB.Add(33);
             listB.Remove(24);
-            
+
             actual = listB.Count;
 
 
@@ -272,5 +272,76 @@ namespace CustomListClassTests
             //assert
             Assert.AreEqual(expected, actual);
         }
-    } 
+
+        [TestMethod]//13
+        public void ToString_CheckCoversion_ListOfIntegers()
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            string expected = "3456";
+            string actual;
+
+            //act
+            listB.Add(3);
+            listB.Add(4);
+            listB.Add(5);
+            listB.Add(6);
+
+
+
+            actual = listB.ToString();
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]//14
+        public void ToString_CheckCoversion_ListOfStrings()
+        {
+            // arrange
+
+            ListB<string> listB = new ListB<string>();
+            string expected = "BenJ";
+            string actual;
+
+            //act
+            listB.Add("B");
+            listB.Add("e");
+            listB.Add("n");
+            listB.Add("J");
+
+
+
+            actual = listB.ToString();
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]//15
+        public void ToString_CheckCoversion_ListOfDoubles()
+        {
+            // arrange
+
+            ListB<double> listB = new ListB<double>();
+            string expected = "30.213.21";
+            string actual;
+
+            //act
+            listB.Add(30.21);
+            listB.Add(3.21);
+
+
+
+
+            actual = listB.ToString();
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+    
+    
+} 
 }
