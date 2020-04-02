@@ -10,29 +10,33 @@ namespace CustomListClassProject
     {
         static void Main(string[] args)
         {
-            ListB<string> listB = new ListB<string>();
-            ListB<string> listA = new ListB<string>();
-            ListB<string> combinedList = new ListB<string>();
-            
+            ListB<int> listB = new ListB<int>();
+            ListB<int> listA = new ListB<int>();
+            ListB<int> zippedList = new ListB<int>();
+           
 
             //act
-            listB.Add("B");
-            listB.Add("e");
-            listB.Add("n");
-            listA.Add("B");
-            listA.Add("a");
-            listA.Add("m");
-            listA.Add("i");
-            listA.Add("n");
+            listB.Add(1);
+            listB.Add(2);
+            listB.Add(3);
+            listB.Add(5);
+            listA.Add(1);
+            listA.Add(4);
+            listA.Add(5);
+            listA.Add(6);
+            listA.Add(7);
 
-            combinedList = listB - listA;
-
-            Console.WriteLine($"{combinedList.Count}");
-
+            zippedList = listB.Zip(listA);
 
 
 
-            
+            Console.WriteLine($"{zippedList.Count}");
+            Console.ReadLine();
+
+
+
+
+
         }
         
     }

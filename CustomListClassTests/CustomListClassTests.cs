@@ -208,23 +208,7 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]//10
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void Remove_CheckForErrorMessage_RemoveValueThatsNotThere()
-
-        {
-            // arrange
-
-            ListB<int> listB = new ListB<int>();
-
-            //act
-            listB.Add(24);
-            listB.Add(12);
-            listB.Add(56);
-            listB.Remove(99);
-
-
-        }
+        
 
         [TestMethod]//11
         public void Remove_CheckCount_RemoveAValueThatHasADuplicateValue()
@@ -441,7 +425,7 @@ namespace CustomListClassTests
 
 
 
-            actual = listB.Count;
+            actual = combinedList.Count;
 
 
             //assert
@@ -473,14 +457,76 @@ namespace CustomListClassTests
 
 
 
+            actual = combinedList.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]//20
+        public void OverloadSubtractionOfLists_CheckCountOfOriginalList_TwoListsOfInts()
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            ListB<int> listA = new ListB<int>();
+            ListB<int> combinedList = new ListB<int>();
+            int expected = 3;
+            int actual;
+
+            //act
+            listB.Add(1);
+            listB.Add(2);
+            listB.Add(3);
+            listA.Add(1);
+            listA.Add(4);
+            listA.Add(5);
+            listA.Add(6);
+            listA.Add(7);
+
+            combinedList = listB - listA;
+
+
+
             actual = listB.Count;
 
 
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]//20
+        public void Zip_CheckCount_TwoListsOfInts()
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            ListB<int> listA = new ListB<int>();
+            ListB<int> zippedList = new ListB<int>();
+            int expected = 9;
+            int actual;
+
+            //act
+            listB.Add(1);
+            listB.Add(2);
+            listB.Add(3);
+            listB.Add(5);
+            listA.Add(1);
+            listA.Add(4);
+            listA.Add(5);
+            listA.Add(6);
+            listA.Add(7);
+
+            zippedList = listB.Zip(listA);
 
 
 
-    }
+            actual = zippedList.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+
+        }
+        }
 }

@@ -19,6 +19,7 @@ namespace CustomListClassProject
         {
             get
             {
+                
                 return this.count;
             }
             set
@@ -44,7 +45,7 @@ namespace CustomListClassProject
         {
             get
             {
-
+                
                 return listArray[number];
 
 
@@ -72,6 +73,45 @@ namespace CustomListClassProject
         }
 
         //member methods
+
+        public ListB<T> Zip(ListB<T> list)
+        {
+           
+            ListB<T> temp1 = new ListB<T>();
+            ListB<T> temp2 = new ListB<T>();
+            for (int i = 0; i < list.Count; i++)
+            {
+                temp1.Add(list[i]);
+            }
+            for (int i = 0; i < listArray.Length; i++)
+            {
+                temp2.Add(listArray[i]);
+            }
+            ListB<T> zippedList = new ListB<T>();
+            int maxCount;
+            if(temp1.Count > temp2.Count)
+            {
+                maxCount = temp1.Count;
+            }
+            else
+            {
+                maxCount = temp2.Count;
+            }
+            for (int i = 0; i < maxCount; i++)
+            {
+                if (i < temp2.Count)
+                {
+                    zippedList.Add(temp2[i]);
+                }
+                if (i < temp1.Count)
+                {
+                    zippedList.Add(temp1[i]);
+                }
+            }
+            return zippedList;
+            
+
+        }
         public void Add(T value)
         {
             if (count < capacity)
@@ -165,11 +205,7 @@ namespace CustomListClassProject
 
                 }
             }
-            else
-            {
-                throw new ArgumentOutOfRangeException("Value does not exist in the list. Your value is out of range.");
-
-            }
+            
 
 
 
@@ -200,14 +236,18 @@ namespace CustomListClassProject
 
 
             ListB<T> newList = new ListB<T>();
-
             for (int i = 0; i < l1.Count; i++)
+            {
+                newList.Add(l1[i]);
+            }
+
+            for (int i = 0; i < newList.Count; i++)
             {
                 for (int j = 0; j < l2.Count; j++)
                 {
-                    if (l1[i].Equals(l2[j]))
+                    if (newList[i].Equals(l2[j]))
                     {
-                        l1.Remove(l2[j]);
+                        newList.Remove(l2[j]);
                         
                     }
                     
@@ -215,7 +255,7 @@ namespace CustomListClassProject
                 
 
             }
-            return l1;
+            return newList;
 
           
         }
