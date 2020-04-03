@@ -304,7 +304,7 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]//16
+        [TestMethod]//15
         public void OverloadAdditionOfLists_CheckCount_TwoListsOfIntegers()
         {
             // arrange
@@ -336,7 +336,7 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]//17
+        [TestMethod]//16
         public void OverloadAdditionOfLists_CheckCount_TwoListsOfStrings()
         {
             // arrange
@@ -368,7 +368,7 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]//18
+        [TestMethod]//17
         public void OverloadAdditionOfLists_CheckArrayOrderAfterCombining_TwoListsOfStrings()
         {
             // arrange
@@ -400,7 +400,7 @@ namespace CustomListClassTests
             Assert.AreEqual(expected, actual);
         }
 
-        [TestMethod]//19
+        [TestMethod]//18
         public void OverloadSubtractionOfLists_CheckCount_TwoListsOfStrings()
         {
             // arrange
@@ -494,7 +494,7 @@ namespace CustomListClassTests
             //assert
             Assert.AreEqual(expected, actual);
         }
-        [TestMethod]//20
+        [TestMethod]//21
         public void Zip_CheckCount_TwoListsOfInts()
         {
             // arrange
@@ -529,7 +529,111 @@ namespace CustomListClassTests
 
         }
 
-        [TestMethod]//20
+        [TestMethod]//22
+        public void Zip_CheckCount_TwoListsOfStrings()
+        {
+            // arrange
+
+            ListB<string> listB = new ListB<string>();
+            ListB<string> listA = new ListB<string>();
+            ListB<string> zippedList = new ListB<string>();
+            int expected = 9;
+            int actual;
+
+            //act
+            listB.Add("A");
+            listB.Add("A");
+            listB.Add("A");
+            listB.Add("A");
+            listA.Add("A");
+            listA.Add("A");
+            listA.Add("A");
+            listA.Add("A");
+            listA.Add("A");
+
+            zippedList = listB.Zip(listA);
+
+
+
+            actual = zippedList.Count;
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+
+        }
+
+        [TestMethod]//23
+        public void Zip_CheckArrayOrder_TwoListsOfStrings()
+        {
+            // arrange
+
+            ListB<string> listB = new ListB<string>();
+            ListB<string> listA = new ListB<string>();
+            ListB<string> zippedList = new ListB<string>();
+            string expected = "R";
+            string actual;
+
+            //act
+            listB.Add("A");
+            listB.Add("B");
+            listB.Add("C");
+            listB.Add("D");
+            listA.Add("Z");
+            listA.Add("R");
+            listA.Add("S");
+            listA.Add("T");
+            listA.Add("U");
+
+            zippedList = listB.Zip(listA);
+
+
+
+            actual = zippedList[3];
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+
+        }
+        [TestMethod]//23
+        public void Zip_CheckArrayOrder_TwoListsOfInts()
+        {
+            // arrange
+
+            ListB<int> listB = new ListB<int>();
+            ListB<int> listA = new ListB<int>();
+            ListB<int> zippedList = new ListB<int>();
+            int expected = 5 ;
+            int actual;
+
+            //act
+            listB.Add(1);
+            listB.Add(7);
+            listB.Add(9);
+            listB.Add(2);
+            listA.Add(4);
+            listA.Add(8);
+            listA.Add(5);
+            listA.Add(6);
+            listA.Add(5);
+
+            zippedList = listB.Zip(listA);
+
+
+
+            actual = zippedList[5];
+
+
+            //assert
+            Assert.AreEqual(expected, actual);
+
+
+        }
+
+        [TestMethod]//24
         [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Indexer_CheckForExceptionCode()
         {
